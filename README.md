@@ -52,14 +52,18 @@
 ## Usage
 
 1. Ensure Docker is installed on your machine.
-2. Build the Docker image:
+2. Ensure Git in installed in you machine
+3. Git clone.
+   ```sh
+   git clone 
+5. Build the Docker image:
    ```sh
    docker build -t calo_balance_sync .
    ```
-3. Run the Docker container:
+6. Run the Docker container:
    ```sh
    docker run -v $(pwd)/logs:/app/logs -v $(pwd)/reports:/app/reports calo_balance_sync
    ```
-4. The reports will be generated in the `reports` directory.
+7. The reports will be generated in the `reports` directory.
 
 

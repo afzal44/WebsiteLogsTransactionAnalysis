@@ -55,7 +55,9 @@
 2. Ensure Git in installed in you machine
 3. Git clone.
    ```sh
-   git clone 
+   git clone https://github.com/afzal44/calo-assessment-task.git
+   cd calo-assessment-task
+   ```
 5. Build the Docker image:
    ```sh
    docker build -t calo_balance_sync .

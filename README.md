@@ -36,93 +36,22 @@
 - Incorporation of feedback mechanisms to improve the accuracy and effectiveness of the automated system over time.
 
 ## Step-by-Step Solution
-Step 1: Parsing and Loading Data
-# Convert json data to DataFrame
+### Step 1: Parse and Load Log Data
 
-# Extract required fields and normalize nested metadata
+We'll use Python to parse the log data and extract the transaction details.
 
-# Identify overdrafts
-def identify_overdrafts(df):
-    overdrafts = df[df['newBalance'] < 0]
-    return overdrafts
+### Step 2: Identify Overdrafts
 
-# Identify trends and anomalies (example implementation)
-def identify_anomalies(df):
-    anomalies = df[df['amount'] > 1000]  # Example condition
-    return anomalies
+We'll filter transactions where the new balance is negative.
 
-overdrafts_df = identify_overdrafts(transactions_df)
-anomalies_df = identify_anomalies(transactions_df)
+### Step 3: Identify Discrepancies
 
-# Identify discrepancies between subscriptionBalance and paymentBalance
-def identify_discrepancies(errors_df):
-    discrepancies = errors_df[errors_df['subscriptionBalance'] != errors_df['paymentBalance']]
-    return discrepancies
+We'll compare the subscription balance and payment balance from the errors dataset.
 
-discrepancies_df = identify_discrepancies(errors_df)
-Step 3: Generating Reports
+### Step 4: Generate Reports
 
-# Save reports to Excel
-with pd.ExcelWriter('reports/balance_reports.xlsx') as writer:
-    transactions_df.to_excel(writer, sheet_name='All Transactions', index=False)
-    overdrafts_df.to_excel(writer, sheet_name='Overdrafts', index=False)
-    anomalies_df.to_excel(writer, sheet_name='Anomalies', index=False)
-    discrepancies_df.to_excel(writer, sheet_name='Discrepancies', index=False)
+We'll generate an Excel file containing the parsed transactions, overdrafts, and discrepancies.
 
-print("Reports generated successfully.")
-Step 4: Dockerizing the Solution
+### Step 5: Dockerize the Solution
 
-## Project Structure
-
-- `app/main.py`: Main script for parsing logs and generating reports.
-- `app/requirements.txt`: Python dependencies.
-- `app/Dockerfile`: Docker configuration.
-- `logs/`: Sample log files directory.
-- `reports/`: Directory for generated reports.
-
-## Usage
-
-1. Ensure Docker is installed on your machine.
-2. Build the Docker image:
-   ```sh
-   docker build -t calo_balance_sync .
-Run the Docker container:
-docker run -v $(pwd)/logs:/app/logs -v $(pwd)/reports:/app/reports calo_balance_sync
-
-The reports will be generated in the reports directory.
-Implementation Details
-Parsing and Loading Data: Extracted transactions from log files and loaded error data.
-Data Transformation: Processed transaction data, identified overdrafts, discrepancies, and anomalies.
-Generating Reports: Created Excel reports for easy viewing.
-Dockerizing the Solution: Packaged the solution in a Docker container for platform independence.
-Future Improvements
-Enhance log parsing to handle more complex log structures.
-Implement more robust error handling and logging.
-Integrate with a database for better data management.
-Add support for more output formats (e.g., CSV, PDF).
-
-### Complete Code
-
-
-# Identify overdrafts
-def identify_overdrafts(df):
-    overdrafts = df[df['newBalance'] < 0]
-    return overdrafts
-
-# Identify trends and anomalies (example implementation)
-def identify_anomalies(df):
-    anomalies = df[df['amount'] > 1000]  # Example condition
-    return anomalies
-
-overdrafts_df = identify_overdrafts(transactions_df)
-anomalies_df = identify_anomalies(transactions_df)
-
-# Identify discrepancies between subscriptionBalance and paymentBalance
-def identify_discrepancies(errors_df):
-    discrepancies = errors_df[errors_df['subscriptionBalance'] != errors_df['paymentBalance']]
-    return discrepancies
-
-discrepancies_df = identify_discrepancies(errors_df)
-
-# Save reports to Excel
-
+We'll create a Dockerfile to containerize the solution.

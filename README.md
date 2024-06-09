@@ -10,14 +10,14 @@
 - StandardScaler from scikit-learn was used for data standardization.
 
 ## Future Improvements
-- Integration with real-time data streams for continuous monitoring and detection of anomalies.
-- Implementation of advanced anomaly detection techniques, such as deep learning-based methods, for improved accuracy.
-- Development of a user-friendly dashboard for visualizing anomalies and reconciliation results.
-- Incorporation of feedback mechanisms to improve the accuracy and effectiveness of the automated system over time.
 - Enhance log parsing to handle more complex log structures.
 - Implement more robust error handling and logging.
 - Integrate with a database for better data management.
 - Add support for more output formats (e.g., CSV, PDF).
+- Integration with real-time data streams for continuous monitoring and detection of anomalies.
+- Development of a user-friendly dashboard for visualizing anomalies and reconciliation results.
+- Incorporation of feedback mechanisms to improve the accuracy and effectiveness of the automated system over time.
+- Implementation of advanced anomaly detection techniques, such as deep learning-based methods, for improved accuracy.
 
 ## Step-by-Step Solution
 ### Step 1: Parse and Load Log Data

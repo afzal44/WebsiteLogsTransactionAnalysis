@@ -20,25 +20,29 @@
 - Implementation of advanced anomaly detection techniques, such as deep learning-based methods, for improved accuracy.
 
 ## Step-by-Step Solution
-### Step 1: Parse and Load Log Data
 
-We'll use Python to parse the log data and extract the transaction details.
+### Step 1: Understand the Logs and Data Structure
+- Parse the logs to extract relevant information such as transaction details, user balances, and error messages.
+- Identify key events like balance updates and discrepancies.
+- We'll use Python to parse the log data and extract the transaction details.
 
 ### Step 2: Identify Overdrafts
 
-We'll filter transactions where the new balance is negative.
+- Filter transactions where the new balance is negative.
 
 ### Step 3: Identify Discrepancies
 
-We'll compare the subscription balance and payment balance from the errors dataset.
+- Compare the subscription balance and payment balance from the errors dataset.
 
 ### Step 4: Generate Reports
-
-We'll generate an Excel file containing the parsed transactions, overdrafts, and discrepancies.
+- Use Python for parsing logs and generating reports.
+- Export the reports to Excel for easy viewing by non-technical users.
+- Generate an Excel file containing the parsed transactions, overdrafts, and discrepancies.
 
 ### Step 5: Dockerize the Solution
 
-We'll create a Dockerfile to containerize the solution.
+- Create a Dockerfile to containerize the solution.
+  
 ## Project Structure
 
 - `app/main.py`: Main script for parsing logs and generating reports.

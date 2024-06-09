@@ -1,5 +1,3 @@
-# calo-assessment-task
-
 ## Implementation Details
 - This project processes transaction logs to generate reports on subscriber balances, identifying discrepancies and overdrafts.
 

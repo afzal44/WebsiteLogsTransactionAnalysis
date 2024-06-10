@@ -83,4 +83,5 @@ Implementation Choices
    docker build -t calo_balance_sync .
    docker run -v $(pwd)/logs:/app/logs -v $(pwd)/reports:/app/reports -p 5000:5000 calo_balance_sync
    ```
-
+   once flast app started successfully
+** Now open your browser and visit HTTP://localhost:5000 

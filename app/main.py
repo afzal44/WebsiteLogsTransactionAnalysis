@@ -2,7 +2,8 @@ import re
 import os
 import json
 import gzip
-# import pandas as pd
+import pandas as pd
+import matplotlib.pyplot as plt
 import json
 from helper import main_helper
 
@@ -23,6 +24,8 @@ def parse_logs_recursively(path):
 
     if os.path.isdir(path):
         print(f"Directory mode execution Started...")
+        print(f"parsing logs....")
+        print(f"Extracting transactions & Erorr transactions from log files...")
         for root, dirs, files in os.walk(path):
             for file_name in files:
                 file_count += 1
@@ -59,32 +62,32 @@ def parse_logs_recursively(path):
                                 errors_data["request_id"] = request_id
                                 errors.append(errors_data)
 
-    print(f"Total {file_count} log files processed.")
-    # Convert dictionary to JSON
+    # print(f"Total {file_count} log files processed.")
+    # # Convert dictionary to JSON
 
-    json_t_data = json.dumps(transactions, indent=2)
-    # Write JSON data to a file
-    print(f"writing to transaction_data.json file...")
-    with open(r'/app/reports/success_transaction_data.json', 'w', encoding='utf-8') as json_file:
-        json_file.write(json_t_data)
-    print(f"data written to transaction_data.json file... at {os.getcwd()} path ")
+    # json_t_data = json.dumps(transactions, indent=2)
+    # # Write JSON data to a file
+    # print(f"writing to transaction_data.json file...")
+    # with open(r'/app/reports/success_transaction_data.json', 'w', encoding='utf-8') as json_file:
+    #     json_file.write(json_t_data)
+    # print(f"data written to transaction_data.json file... at {os.getcwd()} path ")
 
-    # Convert dictionary to JSON
-    json_e_data = json.dumps(errors, indent=2)
-    # Write JSON data to a file
-    print(f"writing to errors_data.json file...")
-    with open(r'/app/reports/errors_data.json', 'w', encoding='utf-8') as json_file:
-        json_file.write(json_e_data)
-    print(f"data written to errors_data.json file... at {os.getcwd()} path ")
-
+    # # Convert dictionary to JSON
+    # json_e_data = json.dumps(errors, indent=2)
+    # # Write JSON data to a file
+    # print(f"writing to errors_data.json file...")
+    # with open(r'/app/reports/errors_data.json', 'w', encoding='utf-8') as json_file:
+    #     json_file.write(json_e_data)
+    # print(f"data written to errors_data.json file... at {os.getcwd()} path ")
+    print(f"Total {len(transactions)} transactions & {len(errors)} errors found.")
     return transactions, errors
-# path = r'calo_balance_sync\app\test'
-# Example usage
-path = r"C:\Users\afjal\OneDrive\Desktop\big Data Engineer\calo_balance_sync\logs"
-transactions, errors = parse_logs_recursively(path)
-print(len(transactions))
-print(len(errors))
 
-# Create DataFrames
-# transactions_df = pd.DataFrame(transactions)
-# errors_df = pd.DataFrame(errors)
+if os.name == 'nt':
+    print("This is a Windows system (identified using os.name).")
+    path = r"C:\Users\afjal\OneDrive\Desktop\big Data Engineer\calo_balance_sync\logs"
+elif os.name == 'posix':
+    print("This is a Unix-like system (identified using os.name).")
+    path = r"logs"
+    
+transactions, errors = parse_logs_recursively(path)
+
